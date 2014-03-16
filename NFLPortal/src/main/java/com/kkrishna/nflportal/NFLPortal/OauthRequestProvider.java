@@ -15,7 +15,7 @@ import org.scribe.oauth.OAuthService;
 
 public class OauthRequestProvider {
 
-	private static final String PROTECTED_RESOURCE_URL = "http://fantasysports.yahooapis.com/fantasy/v2/teams";
+	private static final String PROTECTED_RESOURCE_URL = "http://fantasysports.yahooapis.com/fantasy/v2/game/314/players;start=50";
 
 	public static void main(String[] args) throws HttpException, IOException {
 		
