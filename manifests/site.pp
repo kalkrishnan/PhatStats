@@ -1,5 +1,11 @@
-require nodejs
-exec { "yeoman":
-	provider => shell,
-	command => "npm install -g yo"
+include nodejs
+package { 'express':
+  provider => npm,
+  ensure => 'present',
+  before  => package["yo"],
+}
+package { 'yo':
+  ensure => present,
+  provider => 'npm',
+  require => Class["nodejs"],
 }

@@ -72,12 +72,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # #   content => "Welcome to your Vagrant-built virtual machine!
   # #               Managed by Puppet.\n"
   # # }
-  #
-   config.vm.provision :puppet do |puppet|
-     puppet.manifests_path = "manifests"
-     puppet.manifest_file  = "site.pp"
-	 puppet.module_path = "modules"
-   end
+  config.vm.provision :shell do |shell|
+    shell.inline = "mkdir -p /etc/puppet/modules;
+					puppet module install maestrodev/wget;
+					puppet module install puppetlabs/stdlib;
+                    puppet module install willdurand/nodejs --force"
+  end
+ 
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "manifests"
+    puppet.manifest_file  = "site.pp"
+  end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
