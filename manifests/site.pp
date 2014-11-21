@@ -2,9 +2,9 @@ include nodejs
 package { 'express':
   provider => npm,
   ensure => 'present',
-  before  => package["yo"],
+  before  => Package["yo"],
 }
-package { 'yo':
+package { ['yo','grunt-cli','bower']:
   ensure => present,
   provider => 'npm',
   require => Class["nodejs"],
