@@ -1,4 +1,5 @@
 include nodejs
+include git
 package { 'express':
   provider => npm,
   ensure => 'present',
